@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des factures</title>
+</head>
+<body>
+<h1>DVDStore : Votre boutique de DVD en ligne</h1>
+<h2>Actions disponibles :</h2>
+<ul>
+    <li><a href="" >Ajout de film</a></li>
+</ul>
+
+<table border="1">
+    <tr th:each="movie: ${movies}">
+        <td >
+            <a th:href="@{/movie/{id}(id=${movie.id})}" th:text="${movie.title}"/>
+        </td>
+        <td th:text="${movie.genre}"></td>
+    </tr>
+</table>
+</body>
+</html>
