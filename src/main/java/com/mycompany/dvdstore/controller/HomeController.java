@@ -4,6 +4,8 @@ import com.mycompany.dvdstore.entity.Movie;
 import com.mycompany.dvdstore.service.MovieServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -12,6 +14,7 @@ import java.util.List;
 import java.util.Scanner;
 
 //@Controller
+//@RequestMapping("/movie")
 public class HomeController {
     @Autowired
     private MovieServiceInterface movieService;
@@ -34,12 +37,27 @@ public class HomeController {
         movie.setTitle(title);
         movieService.registerMovie(movie);
     }
-    @RequestMapping("/dvdstore-home")
-    public @ModelAttribute("movies") List<Movie> displayHome(){
-        System.out.println("Tentative d'affichage de l'a-propos");
-        List<Movie> movies=movieService.getMovieList();
-        return movies;
+
+    @GetMapping("/dvdstore-home")
+    public void displayHome(){
+
+    }
+
+    @GetMapping("/add-movie-form")
+    public void displayMovieForm(@ModelAttribute Movie movie){
+
     }
 
 
+
+    /*
+    @GetMapping("/add-movie-form")
+    public String displayMovieForm(@ModelAttribute Movie movie){
+        return "add-movie-form";
+    }
+*/
+
 }
+
+
+
