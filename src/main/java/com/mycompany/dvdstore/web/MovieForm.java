@@ -4,29 +4,15 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 public class MovieForm {
-    @NotBlank @Size(max=20)
-    String title;
+
+    private Long id;
     @NotBlank
-    String genre;
-    long id;
-    @Size(max=255)
-    String description;
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
+    @Size(max = 20)
+    private String title;
+    @NotBlank
+    private String genre;
+    @Size(max = 255)
+    private String description;
 
     public String getTitle() {
         return title;
@@ -44,4 +30,19 @@ public class MovieForm {
         this.genre = genre;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

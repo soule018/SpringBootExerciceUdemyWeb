@@ -26,18 +26,6 @@ public class HomeController {
         this.movieService = movieService;
     }
 
-   /*
-    public void addUsingConsole(){
-        Scanner sc=new Scanner(System.in);
-        System.out.println( "what is the title of the movie ?" );
-        String title=sc.nextLine();
-        System.out.println("what is the genre of the movie to be added ?");
-        String genre=sc.nextLine();
-        Movie movie=new Movie();
-        movie.setGenre(genre);
-        movie.setTitle(title);
-        movieService.registerMovie(movie);
-    }*/
 
     @GetMapping("/dvdstore-home")
     public @ModelAttribute("movies") List<Movie> displayHome(){

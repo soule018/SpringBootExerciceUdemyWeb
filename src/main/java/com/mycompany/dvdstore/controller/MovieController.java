@@ -2,9 +2,11 @@ package com.mycompany.dvdstore.controller;
 
 import com.mycompany.dvdstore.entity.Movie;
 import com.mycompany.dvdstore.service.MovieServiceInterface;
+import com.mycompany.dvdstore.web.MovieForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -27,14 +29,14 @@ public class MovieController {
 
     @PostMapping()
     //en utilisant @ModelAttribut, spring va instancier Invoice et nous le fournir en entrée
-    public String addMovie( @ModelAttribute Movie movie) {
-        /*
+    public String addMovie(@Valid @ModelAttribute MovieForm movieForm, BindingResult results) {
+
         if (results.hasErrors()){
             return "add-movie-form";
-        }*/
-        //Movie movie=new Movie();
-        //movie.setTitle(movieForm.getTitle());
-        //movie.setGenre(movieForm.getGenre());
+        }
+        Movie movie=new Movie();
+        movie.setTitle(movieForm.getTitle());
+        movie.setGenre(movieForm.getGenre());
         movieService.registerMovie(movie);
         return "movie-added";
     }
