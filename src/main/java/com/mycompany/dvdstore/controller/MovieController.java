@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 
 
 @Controller
@@ -24,9 +25,16 @@ public class MovieController {
     }
 
 
-    @PostMapping("/add")
+    @PostMapping()
     //en utilisant @ModelAttribut, spring va instancier Invoice et nous le fournir en entrée
-    public String addMovie(@ModelAttribute Movie movie) {
+    public String addMovie( @ModelAttribute Movie movie) {
+        /*
+        if (results.hasErrors()){
+            return "add-movie-form";
+        }*/
+        //Movie movie=new Movie();
+        //movie.setTitle(movieForm.getTitle());
+        //movie.setGenre(movieForm.getGenre());
         movieService.registerMovie(movie);
         return "movie-added";
     }
@@ -38,12 +46,10 @@ public class MovieController {
             return "dvdstore-home";
         }
 
-        @GetMapping("/{id}")
-        public String displayMovieCard ( @PathVariable("id") long id, Model model){
-            System.out.println("La méthode displayMovieCard a été invoquée");
-            model.addAttribute("movie", movieService.getMovieById(id));
-            return "movie-details";
-
-        }
+    @GetMapping("/{id}")
+    public String displayMovieCard(@PathVariable("id") long id, Model model){
+        model.addAttribute("movie",movieService.getMovieById(id));
+        return "movie-details";
+    }
     }
 
