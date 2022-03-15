@@ -26,18 +26,24 @@ public class HomeController {
         this.movieService = movieService;
     }
 
-
+/*
     @GetMapping("/dvdstore-home")
     public @ModelAttribute("movies") List<Movie> displayHome(){
         return movieService.getMovieList();
-    }
+    }*/
 
 
 
     @GetMapping("/add-movie-form")
-    public void displayMovieForm(@ModelAttribute Movie movie){
+    public void displayMovieForm(@ModelAttribute MovieForm movie){
 
     }
+
+    @GetMapping("/dvdstore-home")
+    public void displayHome(){
+        ;
+    }
+
 
 }
 

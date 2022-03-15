@@ -27,7 +27,7 @@ public class MovieController {
     }
 
 
-    /*@PostMapping
+    @PostMapping("/add")
     //en utilisant @ModelAttribut, spring va instancier Invoice et nous le fournir en entrée
     public String addMovie(@Valid @ModelAttribute MovieForm movieForm, BindingResult results) {
 
@@ -37,17 +37,16 @@ public class MovieController {
         Movie movie=new Movie();
         movie.setTitle(movieForm.getTitle());
         movie.setGenre(movieForm.getGenre());
+        movie.setDescription(movieForm.getDescription());
         movieService.registerMovie(movie);
         return "movie-added";
-    }*/
+    }
 
-
+/*
         @GetMapping("/dvdstore-home")
-        public String displayHome (Model model){
+        public void displayHome (Model model){
             System.out.println("Tentative d'affichage de l'a-propos");
-            model.addAttribute("movies", movieService.getMovieList());
-            return "dvdstore-home";
-        }
+        }*/
 
     /*@GetMapping("/{id}")
     public String displayMovieCard(@PathVariable("id") long id, Model model){
