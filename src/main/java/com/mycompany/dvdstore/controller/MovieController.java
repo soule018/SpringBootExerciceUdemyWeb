@@ -42,16 +42,26 @@ public class MovieController {
         return "movie-added";
     }
 
-/*
-        @GetMapping("/dvdstore-home")
-        public void displayHome (Model model){
-            System.out.println("Tentative d'affichage de l'a-propos");
-        }*/
+    @GetMapping("/dvdstore-home")
+    //on retourne un string qui sera l'id de la page
+    public String displayHome(Model model){
+        System.out.println("Tentative d'affichage de l'a-propos");
+        model.addAttribute("movies",movieService.getMovieList());
+        return "dvdstore-home";
+    }
+
+    @GetMapping("/create-form")
+    //méthode permettant l'affichage de mon formulaire
+    public String displayInvoiceCreateForm(@ModelAttribute MovieForm movie){
+        return "add-movie-form";
+    }
+
+}
 
     /*@GetMapping("/{id}")
     public String displayMovieCard(@PathVariable("id") long id, Model model){
         model.addAttribute("movie",movieService.getMovieById(id));
         return "movie-details";
     }*/
-    }
+
 
